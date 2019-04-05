@@ -1,6 +1,6 @@
 import * as d3 from "d3";
 
-export default function drawLineChart(){
+export default function drawLineChart(id,width){
     var lineData = [];
     lineData.push({date:null, nps:120});
     lineData.push({date:new Date(2019, 1, 27), nps:110});
@@ -65,14 +65,13 @@ export default function drawLineChart(){
 
 
     var height  = 230;
-    var width   = 1430;
 
     var margin = {top: 20, right: 15, bottom: 50, left: 35};
 
     width =     width - margin.left - margin.right;
     height =    height - margin.top - margin.bottom;
 
-    var svg = d3.select('#lineChart').append("svg")
+    var svg = d3.select(id).append("svg")
       .attr("width",  width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
       .append("g")

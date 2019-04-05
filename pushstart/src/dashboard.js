@@ -11,6 +11,7 @@ import ActivityStream from './Components/ActivityStream';
 import AssignedToMe from './Components/AssignedToMe';
 
 class Dashboard extends Component {
+    lineChart = React.createRef()  
     state = {
         tasks: []
       }
@@ -24,7 +25,7 @@ class Dashboard extends Component {
       <Row style = {{ marginTop: '-20px'}}>
         <Col>
         <h6 style={{textAlign: 'left'}} id="lineChartHeader">Data Statistics <a style={{fontSize: '12px', float:'right',paddingTop:'8px', color: "#868C96", backgroundColor:'white',height:'30px',width:'90px',textAlign:'right'}} href="/admin">This month <i className="fas fa-chevron-down" style={{fontSize:"10px"}}></i></a></h6>
-        <Card style={{ width: '100%', height:'230px', overflow:'hidden'}} id="lineChart">
+        <Card style={{ width: '100%', height:'230px', overflow:'hidden'}} id="lineChart" ref={this.lineChart}>
         </Card>
         </Col>
       </Row>
@@ -76,7 +77,7 @@ class Dashboard extends Component {
   
 
   componentDidMount = ()=> {
-    drawLineChart("#lineChart");
+    drawLineChart("#lineChart",this.lineChart.current.offsetWidth + 20);
     drawChart2("#graph1");
     drawChart3("#graph2");
     }
